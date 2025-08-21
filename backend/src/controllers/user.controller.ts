@@ -73,6 +73,7 @@ export class UserController implements IUserController{
         try {
             const data:Omit<RestaurantDTO, "id"> = req.body;
             const id = req.params.id;
+            const userId = (req as CustomRequest).user.id;
             if(!id){
                 res.status(StatusCodes.BAD_REQUEST).json({
                     success: false,
@@ -81,7 +82,7 @@ export class UserController implements IUserController{
                 return
             }
 
-            await this._userService.editRestaurant(data,Number(id));
+            await this._userService.editRestaurant(data,Number(id),userId);
 
             res.status(StatusCodes.OK).json({
 				success: true,

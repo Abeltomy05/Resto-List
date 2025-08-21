@@ -1,6 +1,6 @@
 import * as jwt  from "jsonwebtoken";
 import { CustomJwtPayload } from "../middlewares/auth.middleware";
-import { config } from "../config/config";
+import { config } from "../config/env";
 
 const ACCESS_TOKEN_SECRET = config.ACCESS_TOKEN_SECRET!;
 const REFRESH_TOKEN_SECRET = config.REFRESH_TOKEN_SECRET!;
