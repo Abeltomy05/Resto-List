@@ -41,7 +41,20 @@ export class UserService implements IUserService{
       
     }
 
-    async editRestaurant(data:Omit<RestaurantDTO, "id">,id:number):Promise<void>{
+    async editRestaurant(data:Omit<RestaurantDTO, "id">,id:number,userId:number):Promise<void>{
+         const existing = await this._restaurantRepo.findByNameAndAddress(
+            data.name,
+            data.address,
+            userId
+         );
+
+         if (existing && existing.id !== id) {
+            throw new CustomError(
+               ERROR_MESSAGES.RESTAURANT_ALREADY_EXISTS,
+               StatusCodes.CONFLICT
+            );
+         }
+         
        await this._restaurantRepo.updateById(id,data);
     }
 

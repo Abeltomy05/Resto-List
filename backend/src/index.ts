@@ -8,7 +8,7 @@ import morgan from 'morgan';
 import sequelize from "./config/db";
 import { userRoutes } from './routes/user.routes';
 import { authRoutes } from './routes/auth.route';
-import { config } from './config/config';
+import { config } from './config/env';
 
 const app = express();
 
@@ -32,9 +32,9 @@ app.use((err:Error,req:Request,res:Response,next:NextFunction)=>{
 app.use('/api/auth',authRoutes);
 app.use('/api/user',userRoutes);
 
-sequelize.sync() 
+sequelize.authenticate()
   .then(() => {
-    console.log("✅ Database synced");
-    app.listen(PORT, () => console.log("🚀 Server running on http://localhost:3000"));
+    console.log("✅ Database connected");
+    app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
   })
-  .catch(err => console.error("❌ Sync error:", err));
+  .catch(err => console.error("❌ DB connection error:", err));
