@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // Modern JS features
+    "module": "commonjs", // Works well with Node.js
+    "rootDir": "src",
+    "outDir": "dist", // Where compiled JS will go
+    "strict": true, // Enable strict type checking
+    "esModuleInterop": true, // Allow default imports for CommonJS modules
+    "moduleResolution": "node", // Resolve imports like Node.js
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src"], // Compile only from src folder
+  "exclude": ["node_modules", "dist"] // Ignore these
+}
