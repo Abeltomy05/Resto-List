@@ -96,6 +96,7 @@ export class UserController implements IUserController{
     async deleteRestaurant(req:Request,res:Response):Promise<void>{
         try {
             const id = req.params.id;
+            const userId = (req as CustomRequest).user.id;
             if(!id){
                 res.status(StatusCodes.BAD_REQUEST).json({
                     success: false,
@@ -104,7 +105,7 @@ export class UserController implements IUserController{
                 return
             }
 
-            await this._userService.deleteRestaurant(Number(id));
+            await this._userService.deleteRestaurant(Number(id),Number(userId));
 
             res.status(StatusCodes.OK).json({
 				success: true,

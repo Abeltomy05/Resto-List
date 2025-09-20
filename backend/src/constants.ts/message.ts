@@ -23,6 +23,8 @@ export const ERROR_MESSAGES = {
 	MISSING_CREDENTIALS: "MIssing Credentials",
 	UNAUTHORIZED: "Access denied. Please log in.",
 	USER_NOT_FOUND: "User not found",
+	RESTAURANT_NOT_FOUND: "Restaurant not found",
+	CANT_DELETE_RESTAURANT: "You are not authorized to delete this restaurant",
 	EMAIL_ALREADY_EXISTS: "Email is already in use",
 
 	FAILED_TO_CREATE_RESTAURANT: "Failed to create restaurant.",

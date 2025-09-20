@@ -58,8 +58,19 @@ export class UserService implements IUserService{
        await this._restaurantRepo.updateById(id,data);
     }
 
-    async deleteRestaurant(id:number):Promise<void>{
+    async deleteRestaurant(id:number,userId:number):Promise<void>{
+       const restaurant = await this._restaurantRepo.findById(id);
+
+       if (!restaurant) {
+         throw new CustomError(ERROR_MESSAGES.RESTAURANT_NOT_FOUND,StatusCodes.NOT_FOUND);
+       }
+
+       if (restaurant.userId !== userId) {
+          throw new CustomError(ERROR_MESSAGES.CANT_DELETE_RESTAURANT,StatusCodes.FORBIDDEN);
+       }
+
        const res = await this._restaurantRepo.deleteById(id);
+
        if(!res){
         throw new CustomError(ERROR_MESSAGES.FAILED_TO_DELETE_RESTAURANT,StatusCodes.INTERNAL_SERVER_ERROR);
        }
