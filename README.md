@@ -28,10 +28,33 @@ Built with modern web technologies, it provides a smooth and secure experience f
 ## ⚙️ Installation & Setup
 
 1. Clone the repository:
-   ```bash
+   ```
    git clone https://github.com/your-username/restaurant-listing-app.git
    cd Restaurant-Listing
-1. Install dependencies for both frontend and backend:
+2. Install dependencies for both frontend and backend:
+   ```
+   cd backend && npm install
+   cd ../frontend && npm install
+3. Configure environment variables (.env) for backend:
+   ```
+   db_name=your_db_name
+   db_user=your_username
+   db_password=your_password
+   db_host=your_host
+   access_token_secret=your_secret
+   refresh_token_secret=your_secret
+   port=your_port
+   cors_origin=your_frontend_url
+4. Run backend & frontend:
+   ```
+   cd backend
+   npm run dev
+
+   cd frontend
+   npm run dev
+   
+   
+   
 
 
 
